@@ -3,14 +3,14 @@ extends Node
 const SETTINGS_PATH = "user://settings.data"
 
 var weightPerUnitOfInsulin: float = 10
-var useTwoDoses: bool = true
+var useTwoDoses: bool = false
 
 
 func _ready() -> void:
 	if FileAccess.file_exists(SETTINGS_PATH):
 		LoadSettings()  # load settings during start of program
 	else:
-		SaveSettings(10, true)  # make settings file if it doesn't exist
+		SaveSettings(10, false)  # make settings file if it doesn't exist
 		LoadSettings()
 
 
