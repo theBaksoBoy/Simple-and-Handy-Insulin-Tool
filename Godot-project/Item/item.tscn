@@ -1,0 +1,126 @@
+[gd_scene load_steps=10 format=3 uid="uid://dojd0crxnfh3a"]
+
+[ext_resource type="Script" path="res://Item/Item.gd" id="1_ca5oa"]
+[ext_resource type="Texture2D" uid="uid://dwsbintstdi6p" path="res://Item/highlight_right.png" id="2_yd2n5"]
+[ext_resource type="Texture2D" uid="uid://btbv7l4iuabnm" path="res://Item/highlight_left.png" id="3_look7"]
+[ext_resource type="Texture2D" uid="uid://dgcvvxo2icoax" path="res://Item/hexagon.png" id="4_476bx"]
+[ext_resource type="Script" path="res://ResizeLabelTextToFit.gd" id="5_383lv"]
+[ext_resource type="Texture2D" uid="uid://ddpewfmxticcb" path="res://Item/dose_division_both.png" id="6_jmn0m"]
+[ext_resource type="Texture2D" uid="uid://cpx0pwt688fag" path="res://Item/dose_division_second.png" id="7_647r7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_af7wx"]
+font_size = 50
+font_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jrjka"]
+font_size = 130
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Item" type="MarginContainer"]
+custom_minimum_size = Vector2(0, 250)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 250.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("1_ca5oa")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.317647, 0.403922, 0.533333, 1)
+
+[node name="HighlightRight" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0.180392, 1, 1, 0.419608)
+layout_mode = 2
+texture = ExtResource("2_yd2n5")
+expand_mode = 1
+
+[node name="HighlightLeft" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0.180392, 1, 1, 0.419608)
+layout_mode = 2
+texture = ExtResource("3_look7")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Left" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.85
+theme_override_constants/margin_left = 17
+theme_override_constants/margin_top = 23
+theme_override_constants/margin_right = 17
+theme_override_constants/margin_bottom = 23
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HBoxContainer/Left"]
+layout_mode = 2
+ratio = 1.1589
+
+[node name="ColoredHexagon" type="TextureRect" parent="HBoxContainer/Left/AspectRatioContainer"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("4_476bx")
+expand_mode = 1
+
+[node name="Middle" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="FoodName" type="Label" parent="HBoxContainer/Middle"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "food name"
+script = ExtResource("5_383lv")
+defaultFontSize = 80
+charactersUntilResize = 11
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Middle"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Multiplier" type="Label" parent="HBoxContainer/Middle/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "(0.09)"
+label_settings = SubResource("LabelSettings_af7wx")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Middle/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 80
+
+[node name="DoseDivisionToggle" type="TextureButton" parent="HBoxContainer/Middle/HBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+toggle_mode = true
+texture_normal = ExtResource("6_jmn0m")
+texture_pressed = ExtResource("7_647r7")
+
+[node name="Right" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Weight" type="Label" parent="HBoxContainer/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "123"
+label_settings = SubResource("LabelSettings_jrjka")
+
+[node name="GramsOfCarbs" type="Label" parent="HBoxContainer/Right/Weight"]
+layout_mode = 2
+offset_left = 13.0
+offset_top = 160.0
+offset_right = 239.0
+offset_bottom = 232.0
+size_flags_vertical = 3
+text = "(11.0)"
+label_settings = SubResource("LabelSettings_af7wx")
+
+[connection signal="toggled" from="HBoxContainer/Middle/HBoxContainer/MarginContainer/DoseDivisionToggle" to="." method="_on_dose_division_toggle_toggled"]

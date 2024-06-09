@@ -1,0 +1,177 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckpoja521t3ri"]
+
+[ext_resource type="Script" path="res://Type/Type.gd" id="1_u6smr"]
+[ext_resource type="Texture2D" uid="uid://dgcvvxo2icoax" path="res://Item/hexagon.png" id="2_i3eut"]
+[ext_resource type="Script" path="res://ResizeLabelTextToFit.gd" id="3_qvneo"]
+[ext_resource type="Script" path="res://Type/TypeDeleteConfirmation.gd" id="4_kat8y"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdmva"]
+bg_color = Color(1, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xj5na"]
+font_size = 50
+font_color = Color(0.196078, 0.196078, 0.196078, 1)
+
+[node name="Type" type="MarginContainer"]
+custom_minimum_size = Vector2(0, 250)
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 250.0
+grow_horizontal = 2
+script = ExtResource("1_u6smr")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.847059, 0.721569, 0.623529, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.41
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 15
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+ratio = 1.1589
+
+[node name="ColoredHexagon" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer/MarginContainer/AspectRatioContainer"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 2
+texture = ExtResource("2_i3eut")
+expand_mode = 1
+
+[node name="FoodName" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "food name"
+script = ExtResource("3_qvneo")
+defaultFontSize = 80
+charactersUntilResize = 11
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Delete" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 50
+text = "Delete"
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Favorite" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer2"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/pressed = SubResource("StyleBoxFlat_gdmva")
+toggle_mode = true
+text = " ★ "
+
+[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Multiplier" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer3"]
+layout_mode = 2
+text = "(0.09)"
+label_settings = SubResource("LabelSettings_xj5na")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.35
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Use" type="Button" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 100
+text = "USE"
+
+[node name="DeleteConfirmation" type="ColorRect" parent="."]
+visible = false
+layout_mode = 2
+color = Color(0.231373, 0, 0, 1)
+script = ExtResource("4_kat8y")
+
+[node name="Label" type="Label" parent="DeleteConfirmation"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "ARE YOU SURE YOU WANT TO DELETE TYPE?"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ConfirmDelete" type="Button" parent="DeleteConfirmation"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -292.0
+offset_top = -131.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 75
+text = "DELETE"
+
+[node name="Cancel" type="Button" parent="DeleteConfirmation"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -131.0
+offset_right = 292.0
+offset_bottom = -20.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 75
+text = "Cancel"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer/Delete" to="DeleteConfirmation" method="_on_delete_pressed"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/HBoxContainer2/MarginContainer2/Favorite" to="." method="_on_favorite_toggled"]
+[connection signal="pressed" from="HBoxContainer/MarginContainer/Use" to="." method="_on_use_pressed"]
+[connection signal="pressed" from="DeleteConfirmation/ConfirmDelete" to="DeleteConfirmation" method="_on_confirm_delete_pressed"]
+[connection signal="pressed" from="DeleteConfirmation/Cancel" to="DeleteConfirmation" method="_on_cancel_pressed"]

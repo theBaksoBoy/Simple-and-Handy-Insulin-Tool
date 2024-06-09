@@ -1,0 +1,742 @@
+[gd_scene load_steps=13 format=3 uid="uid://6pxlkc23vnr4"]
+
+[ext_resource type="Script" path="res://Calculator.gd" id="1_mm045"]
+[ext_resource type="Script" path="res://Dose/Dose.gd" id="2_5r31r"]
+[ext_resource type="PackedScene" uid="uid://irsikhodahdr" path="res://Dose/dose_output.tscn" id="2_eruo6"]
+[ext_resource type="Script" path="res://FavoriteShortcuts/FavoriteShortcuts.gd" id="4_ikp31"]
+[ext_resource type="Script" path="res://Type/TypesList.gd" id="5_f7lbq"]
+[ext_resource type="Script" path="res://Type/AddNewType.gd" id="6_dcoig"]
+[ext_resource type="Texture2D" uid="uid://dgcvvxo2icoax" path="res://Item/hexagon.png" id="7_w0q31"]
+[ext_resource type="Script" path="res://Menu.gd" id="8_xgyph"]
+[ext_resource type="Texture2D" uid="uid://bckkgtm8ix4ob" path="res://Settings/dose_count_1.png" id="9_4t7e8"]
+[ext_resource type="Texture2D" uid="uid://ci714cnpyx3au" path="res://Settings/dose_count_2.png" id="10_cgvj7"]
+[ext_resource type="Script" path="res://History/HistoryScreen.gd" id="11_qtq2d"]
+[ext_resource type="Texture2D" uid="uid://bn2rsak5i3tk0" path="res://baksoBoy emblem white.png" id="12_rkgur"]
+
+[node name="Calculator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mm045")
+metadata/_edit_horizontal_guides_ = []
+
+[node name="MainScreen" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="Items" type="Control" parent="MainScreen"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Background" type="ColorRect" parent="MainScreen/Items"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.117647, 0.196078, 0.266667, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainScreen/Items"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+scroll_deadzone = 75
+
+[node name="ItemContainer" type="VBoxContainer" parent="MainScreen/Items/ScrollContainer"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Dose" type="Control" parent="MainScreen"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+script = ExtResource("2_5r31r")
+
+[node name="Background" type="ColorRect" parent="MainScreen/Dose"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.74902, 0.784314, 0.823529, 1)
+
+[node name="Dose" type="Label" parent="MainScreen/Dose"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 23.0
+offset_top = -70.0
+offset_right = 291.0
+offset_bottom = 70.0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Dose:
+(0)"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainScreen/Dose"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -643.0
+offset_top = -177.0
+offset_right = -93.0
+offset_bottom = 177.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 1
+
+[node name="DoseOutput1" parent="MainScreen/Dose/VBoxContainer" instance=ExtResource("2_eruo6")]
+layout_mode = 2
+
+[node name="DoseOutput2" parent="MainScreen/Dose/VBoxContainer" instance=ExtResource("2_eruo6")]
+layout_mode = 2
+
+[node name="FavoriteShortcuts" type="ColorRect" parent="MainScreen"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 175)
+layout_mode = 2
+color = Color(0.517647, 0.360784, 0.333333, 1)
+script = ExtResource("4_ikp31")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainScreen/FavoriteShortcuts"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical_scroll_mode = 0
+scroll_deadzone = 75
+
+[node name="FavoriteShortcutsContainer" type="HBoxContainer" parent="MainScreen/FavoriteShortcuts/ScrollContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainScreen"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="MainScreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="save" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer6"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_focus_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 170
+text = "✔"
+
+[node name="menu" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer6"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "..."
+
+[node name="backspace" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer6"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 120
+text = "⌫"
+
+[node name="delete" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer6"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "X"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="MainScreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ListTypes" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer5"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "⎔"
+
+[node name="7" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer5"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "7"
+
+[node name="4" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer5"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "4"
+
+[node name="1" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer5"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "1"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MainScreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="up" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "↑"
+
+[node name="8" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "8"
+
+[node name="5" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "5"
+
+[node name="2" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "2"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainScreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="down" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "↓"
+
+[node name="9" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "9"
+
+[node name="6" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "6"
+
+[node name="3" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "3"
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="MainScreen/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="plus" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "+"
+
+[node name="swap" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "↹"
+
+[node name="point" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "."
+
+[node name="0" type="Button" parent="MainScreen/HBoxContainer/VBoxContainer1"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 170
+text = "0"
+
+[node name="TypesList" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_f7lbq")
+
+[node name="ColorRect" type="ColorRect" parent="TypesList"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TypesList"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollableArea" type="ColorRect" parent="TypesList/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.5
+color = Color(0.47451, 0.427451, 0.388235, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TypesList/VBoxContainer/ScrollableArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+scroll_deadzone = 75
+
+[node name="TypeNodeContainer" type="VBoxContainer" parent="TypesList/VBoxContainer/ScrollableArea/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Buttons" type="ColorRect" parent="TypesList/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.639216, 0.584314, 0.560784, 1)
+
+[node name="AddType" type="Button" parent="TypesList/VBoxContainer/Buttons"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -145.0
+offset_right = 455.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "Add Type"
+
+[node name="Back" type="Button" parent="TypesList/VBoxContainer/Buttons"]
+layout_mode = 1
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 165.0
+theme_override_font_sizes/font_size = 100
+text = "↩"
+
+[node name="SearchBar" type="TextEdit" parent="TypesList/VBoxContainer/Buttons"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -534.0
+offset_top = -145.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 100
+placeholder_text = "Search..."
+
+[node name="AddNewTypeScreen" type="ColorRect" parent="TypesList"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.364706, 0.282353, 0.207843, 1)
+script = ExtResource("6_dcoig")
+
+[node name="Back" type="Button" parent="TypesList/AddNewTypeScreen"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -145.0
+offset_right = 200.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "↩"
+
+[node name="FoodName" type="TextEdit" parent="TypesList/AddNewTypeScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -271.5
+offset_top = -136.0
+offset_right = 271.5
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+placeholder_text = "food name"
+
+[node name="Multiplier" type="TextEdit" parent="TypesList/AddNewTypeScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.5
+offset_top = 51.0
+offset_right = 198.5
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 80
+placeholder_text = "multiplier"
+
+[node name="CreateType" type="Button" parent="TypesList/AddNewTypeScreen"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -434.5
+offset_top = -724.0
+offset_right = 434.5
+offset_bottom = -511.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 150
+text = "Create Type"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TypesList/AddNewTypeScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TypesList/AddNewTypeScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="MarginContainer" type="MarginContainer" parent="TypesList/AddNewTypeScreen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="TypesList/AddNewTypeScreen/VBoxContainer/HBoxContainer/MarginContainer"]
+layout_mode = 2
+ratio = 1.1566
+
+[node name="ColoredHexagon" type="TextureRect" parent="TypesList/AddNewTypeScreen/VBoxContainer/HBoxContainer/MarginContainer/AspectRatioContainer"]
+modulate = Color(0.1, 0.1, 0.1, 1)
+layout_mode = 2
+texture = ExtResource("7_w0q31")
+expand_mode = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="TypesList/AddNewTypeScreen/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ColorPicker" type="ColorPicker" parent="TypesList/AddNewTypeScreen/VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+alignment = 1
+color = Color(0.1, 0.1, 0.1, 1)
+can_add_swatches = false
+color_modes_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="EmptySpace" type="Control" parent="TypesList/AddNewTypeScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Menu" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.486275, 0.486275, 0.486275, 1)
+script = ExtResource("8_xgyph")
+
+[node name="CreditsLogo" type="TextureRect" parent="Menu"]
+modulate = Color(0.270588, 0.270588, 0.270588, 1)
+layout_mode = 0
+offset_left = 43.0
+offset_top = 128.0
+offset_right = 187.0
+offset_bottom = 272.0
+texture = ExtResource("12_rkgur")
+expand_mode = 1
+
+[node name="CreditsLabel" type="Label" parent="Menu"]
+layout_mode = 1
+offset_left = 13.0
+offset_top = 4.0
+offset_right = 221.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0.270588, 0.270588, 0.270588, 1)
+theme_override_font_sizes/font_size = 40
+text = "Created by 
+baksoBoy"
+horizontal_alignment = 1
+
+[node name="HistoryButton" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -178.5
+offset_top = 135.0
+offset_right = 178.5
+offset_bottom = 280.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "History
+"
+
+[node name="Back" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -145.0
+offset_right = 200.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "↩"
+
+[node name="WeightPerUnitOfInsulinLabel" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -1026.0
+offset_right = 234.0
+offset_bottom = -746.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "weight per 
+unit of insulin"
+
+[node name="WeightPerUnitOfInsulinInput" type="TextEdit" parent="Menu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = -973.0
+offset_right = 467.0
+offset_bottom = -773.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 125
+
+[node name="DoseCountLabel" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -664.0
+offset_right = 234.0
+offset_bottom = -524.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "dose count"
+
+[node name="DoseCountButton" type="TextureButton" parent="Menu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 200.0
+offset_top = -693.0
+offset_right = 400.0
+offset_bottom = -493.0
+grow_horizontal = 2
+grow_vertical = 0
+toggle_mode = true
+texture_normal = ExtResource("9_4t7e8")
+texture_pressed = ExtResource("10_cgvj7")
+
+[node name="SaveSettingsButton" type="Button" parent="Menu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -341.5
+offset_top = -373.0
+offset_right = 341.5
+offset_bottom = -228.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "Save Settings"
+
+[node name="SettingsLabel" type="Label" parent="Menu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -367.0
+offset_top = -1282.0
+offset_right = 367.0
+offset_bottom = -1002.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 150
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="Divider" type="ColorRect" parent="Menu"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1276.0
+offset_bottom = -1263.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.32549, 0.32549, 0.32549, 1)
+
+[node name="HistoryScreen" type="ColorRect" parent="Menu"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.321569, 0.321569, 0.321569, 1)
+script = ExtResource("11_qtq2d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/HistoryScreen"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Menu/HistoryScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 10.0
+horizontal_scroll_mode = 0
+scroll_deadzone = 75
+
+[node name="HistoryCalculationContainer" type="VBoxContainer" parent="Menu/HistoryScreen/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="Menu/HistoryScreen/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.188235, 0.188235, 0.188235, 1)
+
+[node name="Back" type="Button" parent="Menu/HistoryScreen/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -145.0
+offset_right = 200.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "↩"
+
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer6/save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer6/menu" to="Menu" method="_on_menu_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer6/backspace" to="." method="_on_backspace_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer6/delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer5/ListTypes" to="." method="_on_ListTypes_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer5/7" to="." method="_on_7_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer5/4" to="." method="_on_4_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer5/1" to="." method="_on_1_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer3/up" to="." method="_on_up_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer3/8" to="." method="_on_8_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer3/5" to="." method="_on_5_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer3/2" to="." method="_on_2_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer2/down" to="." method="_on_down_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer2/9" to="." method="_on_9_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer2/6" to="." method="_on_6_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer2/3" to="." method="_on_3_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer1/plus" to="." method="_on_plus_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer1/swap" to="." method="_on_swap_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer1/point" to="." method="_on_point_pressed"]
+[connection signal="pressed" from="MainScreen/HBoxContainer/VBoxContainer1/0" to="." method="_on_0_pressed"]
+[connection signal="pressed" from="TypesList/VBoxContainer/Buttons/AddType" to="TypesList" method="_on_add_type_pressed"]
+[connection signal="pressed" from="TypesList/VBoxContainer/Buttons/Back" to="TypesList" method="_on_back_pressed"]
+[connection signal="text_changed" from="TypesList/VBoxContainer/Buttons/SearchBar" to="TypesList" method="_on_search_bar_text_changed"]
+[connection signal="pressed" from="TypesList/AddNewTypeScreen/Back" to="TypesList/AddNewTypeScreen" method="_on_back_pressed"]
+[connection signal="pressed" from="TypesList/AddNewTypeScreen/CreateType" to="TypesList/AddNewTypeScreen" method="_on_create_type_pressed"]
+[connection signal="color_changed" from="TypesList/AddNewTypeScreen/VBoxContainer/HBoxContainer/MarginContainer2/ColorPicker" to="TypesList/AddNewTypeScreen" method="_on_color_picker_color_changed"]
+[connection signal="pressed" from="Menu/HistoryButton" to="Menu/HistoryScreen" method="_on_history_button_pressed"]
+[connection signal="pressed" from="Menu/Back" to="Menu" method="_on_back_pressed"]
+[connection signal="pressed" from="Menu/SaveSettingsButton" to="Menu" method="_on_save_settings_button_pressed"]
+[connection signal="pressed" from="Menu/HistoryScreen/VBoxContainer/ColorRect/Back" to="Menu/HistoryScreen" method="_on_back_pressed"]

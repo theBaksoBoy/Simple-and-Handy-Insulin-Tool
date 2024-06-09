@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy5dqk6iaw533"]
+
+[ext_resource type="Script" path="res://History/HistoryCalculation.gd" id="1_8wo0w"]
+
+[node name="HistoryCalculation" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 276.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("1_8wo0w")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 2
+mouse_filter = 1
+color = Color(0.239216, 0.239216, 0.239216, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CalculationInfo" type="Label" parent="HBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "calculation info"
+autowrap_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Use" type="Button" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+theme_override_font_sizes/font_size = 75
+text = "USE"
+
+[node name="TotalCarbs" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 75
+text = "carbs"
+
+[node name="Datetime" type="Label" parent="HBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "datetime"
+
+[connection signal="pressed" from="HBoxContainer/MarginContainer/VBoxContainer/Use" to="." method="_on_use_pressed"]

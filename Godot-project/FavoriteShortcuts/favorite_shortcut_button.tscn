@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu2fdx30fjt83"]
+
+[ext_resource type="Script" path="res://FavoriteShortcuts/FavoriteShortcutButton.gd" id="1_nj08d"]
+[ext_resource type="Texture2D" uid="uid://dgcvvxo2icoax" path="res://Item/hexagon.png" id="2_iy6nr"]
+[ext_resource type="Script" path="res://ResizeLabelTextToFit.gd" id="3_bf3ph"]
+
+[sub_resource type="FontVariation" id="FontVariation_07b8m"]
+spacing_top = -5
+spacing_bottom = -10
+
+[node name="FavoriteShortcutButton" type="Control"]
+custom_minimum_size = Vector2(175, 175)
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_nj08d")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.788235, 0.631373, 0.603922, 1)
+
+[node name="ColoredHexagon" type="TextureRect" parent="."]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -67.5
+offset_top = 11.0
+offset_right = 67.5
+offset_bottom = 128.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("2_iy6nr")
+expand_mode = 1
+
+[node name="UseButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+
+[node name="FoodName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontVariation_07b8m")
+theme_override_font_sizes/font_size = 24
+text = "food name"
+horizontal_alignment = 1
+autowrap_mode = 3
+script = ExtResource("3_bf3ph")
+defaultFontSize = 24
+charactersUntilResize = 24
+
+[connection signal="pressed" from="UseButton" to="." method="_on_use_button_pressed"]
